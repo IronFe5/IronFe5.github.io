@@ -1,0 +1,20 @@
+html, body {
+    background-color:black;
+    font-family:"Courier";
+    color:green;
+    font-size: 100px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  button {
+    background-color: green;
+    font-family:"Courier";
+    border: none;
+    color: black;
+    padding: 50px 100px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 75px;
+  }
