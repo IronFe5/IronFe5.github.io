@@ -1,0 +1,7 @@
+How to calculate WPM
+
+take total characters in the quote (calcualted at the end, not during the typing)
+take total time taken
+convert chracters to words, 1 word = 4.7 characters
+convert time taken  to minutes
+wpm = words / minutes
