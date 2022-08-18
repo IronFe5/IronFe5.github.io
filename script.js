@@ -1,4 +1,3 @@
-const RANDOM_QUOTE_API_URL = "http://api.quotable.io/random"
 const quoteDisplayElement = document.getElementById("quoteDisplay")
 const quoteInputElement = document.getElementById("quoteInput")
 const timerElement = document.getElementById("timer")
@@ -38,9 +37,17 @@ quoteInputElement.addEventListener("input", () => {
 })
 
 function getRandomQuote() {
-    return fetch(RANDOM_QUOTE_API_URL)
-        .then(response => response.json())
-        .then(data => data.content)
+    const quotes = ["What lies behind us and what lies before us are small matters compared to what lies within us.",
+    "When you have got an elephant by the hind legs and he is trying to run away, it's best to let him run.",
+    "Lose an hour in the morning, and you will spend all day looking for it.",
+    "There is no retirement for an artist, it's your way of living so there is no end to it.",
+    "There are two ways of spreading light: to be the candle or the mirror that reflects it.",
+    "Wisdom cannot come by railroad or automobile or airplane or be hurried up by telegraph or telephone.",
+    "Trust your own instinct. Your mistakes might as well be your own, instead of someone else's.",
+    "Silence is the sleep that nourishes wisdom.",
+    "I gave my life to become the person I am right now. Was it worth it?"]
+    choice = Math.floor(Math.random() * 8)
+    return quotes[choice]
 }
 
 async function renderNewQuote() {
