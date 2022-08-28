@@ -8,15 +8,16 @@ body {
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    background-color: darkslategrey;
+    background-color: #222831;
 }
 
-body, .quote-input {
+body, .quote-input, .wpm-display {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #EEEEEE
 }
 
 .container {
-    background: green;
+    background: #393E46;
     padding: 1rem;
     border-radius: .5rem;
     width: 700px;
@@ -27,7 +28,7 @@ body, .quote-input {
     position: absolute;
     top: 2rem;
     font-size: 3rem;
-    color: green;
+    color:#00ADB5;
     font-weight:bold;
 }
 
@@ -35,18 +36,22 @@ body, .quote-input {
     margin-bottom: 1rem;
     margin-left: calc(1rem + 2px);
     margin-right: calc(1rem + 2px);
+    font-size: 2rem;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }
 
 .quote-input{
     background-color: transparent;
-    border: 2px solid darkgreen;
+    border: 2px solid #EEEEEE;
     outline: none;
     width: 100%;
     height: 8rem;
     margin: auto;
     resize: none;
     padding: .5rem 1rem;
-    font-size: 1rem;
+    font-size: 2rem;
     border-radius: .5rem;
 }
 .quote-input:focus {
@@ -54,10 +59,27 @@ body, .quote-input {
 }
 
 .correct {
-    color: greenyellow;
+    color: #00ADB5;
 }
 
 .incorrect {
     color: red;
     text-decoration: underline;
+}
+
+.wpm-display{
+    font-size: 5rem;
+    color: #00ADB5;
+    text-align: center;
+}
+
+.new-test{
+    margin: auto;
+    margin-top: 1rem;
+    display: block;
+    padding: .5rem 1rem;
+    font-size: 1.5rem;
+    border-radius: .5rem;
+    background-color: #222831;
+    color: #00ADB5;
 }

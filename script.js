@@ -1,6 +1,8 @@
 const quoteDisplayElement = document.getElementById("quoteDisplay")
 const quoteInputElement = document.getElementById("quoteInput")
 const timerElement = document.getElementById("timer")
+const wpmElement = document.getElementById("wpmDisplay")
+
 var wpm = 0
 
 quoteInputElement.addEventListener("input", () => {
@@ -24,17 +26,50 @@ quoteInputElement.addEventListener("input", () => {
         }
     })
 
-    if (correct) {
+   if (correct) {
+        quoteDisplayElement.style.display = "none"
+        quoteInputElement.style.display = "none"
+        timerElement.style.display = "none"
+        wpmElement.style.display = "block"
         length = arrayQuote.length
         words = length / 5
         time = getTimerTime()
         minutes = time / 60
         wpm = Math.round(words / minutes)
-
-        prompt(" WPM: "+ wpm + " Press enter to continue.")
-        renderNewQuote()
+        quoteInputElement.blur()
+//        prompt(" WPM: "+ wpm + " Press enter to continue.")
+        document.getElementById("wpmDisplay").innerHTML = ("WPM: " + wpm)
+        timerElement.disabled = true
+//        renderNewQuote())
     }
 })
+
+
+//quoteInputElement.addEventListener("keypress", (event) => {
+//    startTimer()
+//},
+//{ once: true });
+
+//window.addEventListener("keypress", (event) => {
+//    if(event.key === "Enter"){
+//        renderNewQuote()
+//        quoteInputElement.blur();
+//    }
+//})
+
+function generateWords(){
+    var list = []
+    const words = ["the","of","to","and","a","in","is","it","you","that","he","was","for","on","are","with","as","I","his","they","be","at","one","have","this","from","or","had","by","not","word","but","what","some","we","can","out","other","were","all","there","when","up","use","your","how","said","an","each","she","which","do","their","time","if","will","way","about","many","then","them","write","would","like","so","these","her","long","make","thing","see","him","two","has","look","more","day","could","go","come","did","number","sound","no","most","people","my","over","know","water","than","call","first","who","may","down","side","been","now","find"]
+    for (let i = 0; i < 10; i++) {
+        list.push(words[Math.floor(Math.random() * 100)])
+    }
+    return(list.join(" "))
+
+  }
+
+console.log(generateWords())
+
+
 
 function getRandomQuote() {
     const quotes = ["What lies behind us and what lies before us are small matters compared to what lies within us.",
@@ -51,7 +86,7 @@ function getRandomQuote() {
 }
 
 async function renderNewQuote() {
-    const quote = await getRandomQuote()
+    const quote = await generateWords()
     quoteDisplayElement.innerHTML = ""
     quote.split("").forEach(character => {
         const characterSpan = document.createElement("span")
@@ -60,20 +95,34 @@ async function renderNewQuote() {
     })
     quoteInputElement.value = null
     startTimer()
+    quoteInputElement.focus()
+    document.getElementById("wpmDisplay").innerHTML = ("")
+    quoteDisplayElement.style.display = "block"
+    quoteInputElement.style.display = "block"
+    timerElement.style.display = "none"
+    quoteInputElement.focus()
 }
 
 let startTime
 function startTimer() {
-    timerElement.innterText = 0
+    quoteInputElement.addEventListener("keypress", (event) => {
+    timer.innterText = 0
     startTime = new Date()
     setInterval(() => {
         timer.innerText = getTimerTime()
     }, 1000)
+//    timerElement.style.display = "block"
+    },
+    { once: true })
 }
 
 function getTimerTime() {
     return Math.floor((new Date() - startTime) / 1000)
+
+
 }
 
-
-renderNewQuote()
+quoteInputElement.style.display = "none"
+timerElement.style.display = "none"
+wpmElement.style.display = "none"
+// renderNewQuote()
